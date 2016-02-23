@@ -1,0 +1,36 @@
+\section{A Unified Framework}
+
+The existing environment of open source software solutions for machine learning
+is fragmented: there is rarely a single location for a wide variety of
+algorithms. Tools tend to specialize on one particular area, and as such there
+is a wide variety of tools one must sample when performing different machine
+learning tasks. For text-mining tasks, this is even more apparent; it is
+extremely difficult (if not impossible) to find tools that support both
+traditional information retrieval tasks (like tokenization, indexing, and
+search) alongside traditional machine learning tasks (like document
+classification, regression, and topic modeling).
+
+This places an undue burden on researchers---not only are they required to have
+a detailed understanding of the research problem at hand, but they are now
+forced to understand this fragmented nature of the open source software
+community, find the appropriate software packages for their needs, and compile
+and configure each appropriate tool. Even when this is all done, there is the
+problem of data formatting---it is unlikely that the tools all have standardized
+upon a single input format, so a certain amount of ``data munging'' is now
+required. All of this detracts from the actual research task at hand, which has
+a marked impact on the speed with which new ideas are discovered.
+
+The goal of the \meta/ project is to address these issues. In particular,
+we provide a unifying framework for existing machine learning algorithms,
+allowing researchers to quickly run controlled experiments. We have modularized
+the feature generation, instance representation, data storage formats, and
+algorithm implementations; this allows for researchers to make seamless
+transitions along any of these dimensions with minimal effort.
+
+We have a liberal licensing scheme for \meta/. It is dual-licensed under
+the University of Illinois/NCSA Open Source Licence and the MIT License. We use
+these permissive licenses deliberately to allow for \meta/'s
+incorporation into commercial products: we feel that the use of a copyleft
+license creates unnecessary barriers between the code we develop as researchers
+and the applications of our techniques to areas outside of the research
+community.

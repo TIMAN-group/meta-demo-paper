@@ -1,0 +1,37 @@
+\section{Usability}
+
+\meta/ is hosted publicly on Github\footnotemark[1], which provides
+the project with community involvement through its bug/issue tracker and
+fork/pull request model. Its API is heavily documented\footnotemark[2] and the
+project website contains several tutorials that cover the major aspects of
+the toolkit\footnotemark[3] to enable users to get started as fast as
+possible with little friction.
+
+\footnotetext[1]{\url{https://github.com/meta-toolkit/meta/}}
+\footnotetext[2]{\url{https://meta-toolkit.org/doxygen/namespaces.html}}
+\footnotetext[3]{\url{https://meta-toolkit.org/}}
+
+A major design point in \meta/ is to allow for most of the functionality to be
+configured via a configuration file. This enables exploratory data analysis
+without having to write (or recompile) any code. Designing the code in this way
+also encourages the components of the system to be pluggable: the entire
+indexing process, for example, consists of several modular layers which can be
+controlled by the configuration file.
+
+A simple class hierarchy allows users to add filters, analyzers, ranking
+functions, and classifiers with full integration to the toolkit (\emph{e.g.} one
+may specify user-defined classes in the config file). The process for adding
+these is detailed in the \meta/ online tutorials.
+
+Multi-language support is hard to do correctly. Many toolkits sidestep this
+issue by only supporting ASCII text or the OS language; \meta/ supports multiple
+(non-romance) languages by default, using the industry standard ICU
+library\footnotemark[4]. This allows \meta/ to tokenize arbitrarily-encoded text
+in nearly any language.
+
+\footnotetext[4]{\url{http://site.icu-project.org/}}
+
+Unit tests ensure that contributors are confident that their modifications do
+not break the toolkit. Unit tests are automatically run after each commit and
+pull request, so developers immediately know if there is an issue (of course,
+unit tests may be run manually before committing).

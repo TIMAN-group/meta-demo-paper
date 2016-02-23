@@ -1,0 +1,51 @@
+% Submissions may consist of 6 pages (including references) and should follow
+% the official style guidelines of the main conference.
+
+\documentclass[11pt]{article}
+\usepackage{acl2016}
+\usepackage{times}
+\usepackage{latexsym}
+\usepackage[hidelinks]{hyperref}
+
+\aclfinalcopy % Uncomment this line for the final submission
+%\def\aclpaperid{***} %  Enter the acl Paper ID here
+
+\newcommand\BibTeX{B{\sc ib}\TeX}
+
+\title{MeTA: A Modern C++ Data Sciences Toolkit} % keep "C++"?
+\author{Sean Massung, Chase Geigle \and ChengXiang Zhai \\
+            Computer Science Department, College of Engineering \\
+            University of Illinois at Urbana-Champaign \\
+            {\tt \{massung1,geigle1,czhai\}@illinois.edu}
+}
+\date{}
+
+\def\meta/{\textsc{MeTA}}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+\meta/ is developed to unite machine learning, information retrieval, and
+natural language processing algorithms in one easy-to-use toolkit. Its focus on
+indexing allows it to perform well on large datasets and support online
+classification. \meta/'s liberal open source license encourages contributions,
+and its extensive online documentation and tutorials make this process
+straightforward. We perform experiments and show \meta/'s performance is
+competitive with or better than existing software.
+\end{abstract}
+
+\input{framework}
+\input{big}
+\input{usability}
+\input{experiments}
+\input{demo}
+\input{conclusion}
+
+%\small
+\bibliography{bib}
+\bibliographystyle{acl2016}
+%\normalsize
+
+\end{document}

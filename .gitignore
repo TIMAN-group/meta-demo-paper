@@ -1,0 +1,16 @@
+*dot*.tex
+*.fls
+*.fdb_latexmk
+*.dot
+*.swp
+*.out
+*.nav
+*.snm
+*.toc
+*.pdf
+*.pyg
+*.aux
+*.vrb
+*.log
+*.bbl
+*.blg

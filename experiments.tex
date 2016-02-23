@@ -1,0 +1,91 @@
+\section{Experiments}
+
+\subsection{Natural Language Processing}
+
+Talk about parsers and POS taggers.
+
+\subsection{Information Retrieval}
+
+\meta/'s IR performance is compared with two well-known search engine toolkits:
+\textsc{Lucene}\footnotemark[12], a top-level Apache venture; and
+\textsc{Lemur}~\cite{lemur}, a joint collaboration between the University of
+Massachusetts Amherst and Carnegie Mellon University.
+
+\footnotetext[12]{\url{http://lucene.apache.org/}}
+
+\meta/'s ML performance is compared with \textsc{liblinear}~\cite{liblinear}, a
+well-known SVM library; \textsc{scikit-learn}~\cite{scikit} a Python ML library;
+and \textsc{SVMMulticlass}~\cite{svmmulticlass}, a competitor to
+\textsc{liblinear}. Statistics for datasets used in both parts can be found in
+Fig~\ref{fig:ir}.
+
+First, we compare the speed at which the search engines can index each corpus
+(Fig~\ref{fig:datasets}). We index unigram words with the identical
+tokenization\footnotemark[1] across toolkits. Furthermore, all experiments were
+run on a system with an Intel quad core i7-2760QM (2.40GHz) CPU, eight gigabytes
+of memory, and a 7200 RPM disk. We used the datasets
+20newsgroups\footnotemark[6], the blog authorship corpus\footnotemark[7], Reddit
+comments\footnotemark[5], TREC 2006 Homepages\footnotemark[8], and English
+Wikipedia\footnotemark[9].
+
+\footnotetext[1]{%
+All terms are lower-cased, stop words are removed from a common list of 431 stop
+words, Porter2 (\meta/) or Porter (Lemur, Lucene) stemming is performed, a
+maximum word length of 35 characters is set, and the original documents are not
+stored in the index. In addition, each corpus is converted into a single file
+with one document per line to reduce the effects of many file operations.
+}
+
+\footnotetext[5]{%
+\url{http://www.reddit.com/r/datasets/comments/1mbsa2/155m_reddit_comments_over_15_days/}}
+\footnotetext[6]{\url{http://qwone.com/~jason/20Newsgroups/}}
+\footnotetext[7]{\url{http://ir.dcs.gla.ac.uk/test_collections/blogs06info.html}}
+\footnotetext[8]{\url{http://trec.nist.gov/data.html}}
+\footnotetext[9]{\url{http://en.wikipedia.org/wiki/Wikipedia:Database_download}}
+
+We also compare how large the indexes are for each search engine
+(Fig~\ref{fig:ir}). Ideally, since we are not storing the full text, the indexes
+should be smaller than the original data, though this is not always the case.
+
+To investigate retrieval speed, we created 500 queries for each dataset by
+randomly selecting 500 documents, then randomly selecting one sentence from each
+of the 500 documents. Results are also shown in Fig~\ref{fig:ir}. Relevance of
+returned queries is not an interesting comparison since all indexes should be
+storing identical information; that is, all tokenize the documents the same way
+and a given retrieval function will perform the same operations on each indexed
+document.
+
+We see from the experimental results that \meta/ is a competitive information
+retrieval framework. In indexing speed, it is between \textsc{Lemur} and
+\textsc{Lucene}. Its index sizes are almost the smallest, except against
+\textsc{Lucene}'s Homepages index. In terms of query speed, again \meta/ falls
+between \textsc{Lemur} and \textsc{Lucene}.
+
+\subsection{Machine Learning}
+
+For the machine learning evaluation, we focus on linear classification across
+toolkits. Many applications in \meta/ are in a textual domain, and linear
+classification lends itself to the high-dimensional space that comes with text
+documents. All experiments are performed on a system with a dual core Intel Core
+i5 CPU (M460) clocked at 2.53GHz and eight gigabytes of RAM.
+
+Four datasets (20news, Blog, Newegg, and the Yelp Academic
+Dataset\footnotemark[10]) are textual datasets. The Newegg (crawled ourselves)
+and Yelp datasets are review datasets, and we consider only a partial list of
+the whole dataset where we have removed all three-star reviews. We used MeTA for
+tokenization and feature generation, applying the same constraints as we did for
+the indexing tests. Randomized training (two thirds) and test splits (one third)
+were generated for each of these datasets. For rcv1, we used the existing
+tokenization and training/test splits available on the LIBSVM data
+website~\footnotemark[11].
+
+\footnotetext[10]{\url{https://www.yelp.com/academic_dataset}}
+\footnotetext[11]{\url{http://www.csie.ntu.edu.tw/~cjlin/libsvmtools/datasets/}}
+
+In Fig~\ref{fig:classification}, we can see that \meta/ performs well both in
+terms of speed and accuracy, and presents itself as a viable option in the
+machine learning domain.
+
+\input{dataset-stats}
+\input{classification-exp}
+\input{all-ir}

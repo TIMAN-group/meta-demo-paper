@@ -1,0 +1,22 @@
+\begin{figure}[t]
+\centering
+{\small
+\begin{tabular}{|l|r|r|r|r|}
+  \hline
+  & \textbf{liblinear} & \textbf{scikit} &
+  \textbf{SVM\textsuperscript{mult}} & \textbf{MeTA}\\\hline
+  \textbf{20news}                    & 88.18\%          & 78.03\%  & 70.27\%          & \textbf{89.10\%}\\
+  $(k=20)$                           & 15.64s           & 5.28s    & 35.36s           & 7.55s\\\hline
+  \textbf{Blog}                      & 45.53\%          & 35.91\%  & \textbf{46.22\%} & 41.14\%\\
+  $(k=7)$                            & 310.6s           & 46.94s   & 164.6s           & 28.34s\\\hline
+  \textbf{Newegg}                    & 90.39\%          & 90.71\%  & 78.71\%          & \textbf{91.96\%}\\
+  $(k=2)$                            & 23.90s           & 10.93s   & 3.806s           & 4.182s\\\hline
+  \textbf{Yelp}                      & 91.65\%          & 92.02\%  & 80.22\%          & \textbf{92.98\%}\\
+  $(k=2)$                            & 51.89s           & 27.48s   & 9.700s           & 8.854s\\\hline
+  \textbf{rcv1}                      & \textbf{88.43\%} & 87.68\%  & 55.21\%          & 79.06\%\\
+  $(k=2)$                            & 21.04s           & 99.07s   & 3.37s            & 37.42s\\\hline
+\end{tabular}
+}
+\caption{Accuracy and speed classification results.}
+\label{fig:classification}
+\end{figure}
