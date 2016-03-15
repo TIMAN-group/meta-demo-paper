@@ -4,9 +4,12 @@
 
 Talk about parsers and POS taggers.
 
-Results in Fig~\ref{fig:all-nlp}.
+Results in Fig~\ref{fig:nlp-pos}.
+Results in Fig~\ref{fig:nlp-shallow}.
 
-\input{all-nlp}
+\input{nlp-datasets}
+\input{nlp-pos}
+\input{nlp-shallow}
 
 \subsection{Information Retrieval}
 
@@ -18,7 +21,7 @@ Massachusetts Amherst and Carnegie Mellon University.
 \footnotetext[12]{\url{http://lucene.apache.org/}}
 
 First, we compare the speed at which the search engines can index each corpus
-(Fig~\ref{fig:datasets}). We index unigram words with the identical
+(Fig~\ref{fig:ir-datasets}). We index unigram words with the identical
 tokenization\footnotemark[1] across toolkits. Furthermore, all experiments were
 run on a system with an Intel quad core i7-2760QM (2.40GHz) CPU, eight gigabytes
 of memory, and a 7200 RPM disk. We used the datasets
@@ -29,7 +32,7 @@ Wikipedia\footnotemark[9].
 \footnotetext[1]{%
 All terms are lower-cased, stop words are removed from a common list of 431 stop
 words, Porter2 (\meta/) or Porter (Lemur, Lucene) stemming is performed, a
-maximum word length of 35 characters is set, and the original documents are not
+maximum word length of 32 characters is set, and the original documents are not
 stored in the index. In addition, each corpus is converted into a single file
 with one document per line to reduce the effects of many file operations.
 }
@@ -42,16 +45,17 @@ with one document per line to reduce the effects of many file operations.
 \footnotetext[9]{\url{http://en.wikipedia.org/wiki/Wikipedia:Database_download}}
 
 We also compare how large the indexes are for each search engine
-(Fig~\ref{fig:ir}). Ideally, since we are not storing the full text, the indexes
-should be smaller than the original data, though this is not always the case.
+(Fig~\ref{fig:ir-indexing}). Ideally, since we are not storing the full text,
+the indexes should be smaller than the original data, though this is not always
+the case.
 
 To investigate retrieval speed, we created 500 queries for each dataset by
 randomly selecting 500 documents, then randomly selecting one sentence from each
-of the 500 documents. Results are also shown in Fig~\ref{fig:ir}. Relevance of
-returned queries is not an interesting comparison since all indexes should be
-storing identical information; that is, all tokenize the documents the same way
-and a given retrieval function will perform the same operations on each indexed
-document.
+of the 500 documents. Results are shown in Fig~\ref{fig:ir-query-speed}.
+Relevance of returned queries is not an interesting comparison since all indexes
+should be storing identical information; that is, all tokenize the documents the
+same way and a given retrieval function will perform the same operations on each
+indexed document.
 
 We see from the experimental results that \meta/ is a competitive information
 retrieval framework. In indexing speed, it is between \textsc{Lemur} and
@@ -59,7 +63,11 @@ retrieval framework. In indexing speed, it is between \textsc{Lemur} and
 \textsc{Lucene}'s Homepages index. In terms of query speed, again \meta/ falls
 between \textsc{Lemur} and \textsc{Lucene}.
 
-\input{all-ir}
+\input{ir-datasets}
+\input{ir-index-size}
+\input{ir-indexing}
+\input{ir-query-speed}
+\input{ir-map}
 
 \subsection{Machine Learning}
 
@@ -67,7 +75,7 @@ between \textsc{Lemur} and \textsc{Lucene}.
 well-known SVM library; \textsc{scikit-learn}~\cite{scikit} a Python ML library;
 and \textsc{SVMMulticlass}~\cite{svmmulticlass}, a competitor to
 \textsc{liblinear}. Statistics for datasets used in both parts can be found in
-Fig~\ref{fig:ir}.
+Fig~\ref{fig:ml-datasets}.
 
 For the machine learning evaluation, we focus on linear classification across
 toolkits. Many applications in \meta/ are in a textual domain, and linear
@@ -88,9 +96,9 @@ website~\footnotemark[11].
 \footnotetext[10]{\url{https://www.yelp.com/academic_dataset}}
 \footnotetext[11]{\url{http://www.csie.ntu.edu.tw/~cjlin/libsvmtools/datasets/}}
 
-In Fig~\ref{fig:classification}, we can see that \meta/ performs well both in
+In Fig~\ref{fig:ml-exp}, we can see that \meta/ performs well both in
 terms of speed and accuracy, and presents itself as a viable option in the
 machine learning domain.
 
-\input{dataset-stats}
-\input{classification-exp}
+\input{ml-datasets}
+\input{ml-exp}
