@@ -14,9 +14,11 @@ Results in Fig~\ref{fig:nlp-shallow}.
 \subsection{Information Retrieval}
 
 \meta/'s IR performance is compared with two well-known search engine toolkits:
-\textsc{Lucene}\footnotemark[12], a top-level Apache venture; and
-\textsc{Lemur}~\cite{lemur}, a joint collaboration between the University of
-Massachusetts Amherst and Carnegie Mellon University.
+\textsc{Lucene}'s latest version 5.5.0\footnotemark[12], a top-level Apache
+venture; and \textsc{Indri}'s latest version 5.10~\cite{lemur}, a joint
+collaboration between the University of Massachusetts Amherst and Carnegie
+Mellon University. Note that \textsc{Indri} is also known as \textsc{Lemur}; in
+this paper, we choose to use the former for consistency.
 
 \footnotetext[12]{\url{http://lucene.apache.org/}}
 
@@ -31,7 +33,7 @@ Wikipedia\footnotemark[9].
 
 \footnotetext[1]{%
 All terms are lower-cased, stop words are removed from a common list of 431 stop
-words, Porter2 (\meta/) or Porter (Lemur, Lucene) stemming is performed, a
+words, Porter2 (\meta/) or Porter (Indri, Lucene) stemming is performed, a
 maximum word length of 32 characters is set, and the original documents are not
 stored in the index. In addition, each corpus is converted into a single file
 with one document per line to reduce the effects of many file operations.
@@ -58,10 +60,10 @@ same way and a given retrieval function will perform the same operations on each
 indexed document.
 
 We see from the experimental results that \meta/ is a competitive information
-retrieval framework. In indexing speed, it is between \textsc{Lemur} and
+retrieval framework. In indexing speed, it is between \textsc{Indri} and
 \textsc{Lucene}. Its index sizes are almost the smallest, except against
 \textsc{Lucene}'s Homepages index. In terms of query speed, again \meta/ falls
-between \textsc{Lemur} and \textsc{Lucene}.
+between \textsc{Indri} and \textsc{Lucene}.
 
 \input{ir-datasets}
 \input{ir-index-size}
