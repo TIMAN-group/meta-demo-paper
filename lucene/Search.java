@@ -30,6 +30,7 @@ class Search {
     final static String prefix = "/home/sean/data/" + dataset + "/";
     final static String indexPath = dataset + "-index";
     final static String queryList = dataset + "-queries.txt";
+    static int queryId = 300;  // start query ID
 
    public
     static void main(String[] args) throws Exception {
@@ -41,20 +42,17 @@ class Search {
         Analyzer analyzer = new SpecialAnalyzer();
         BufferedReader br = new BufferedReader(new FileReader(queryList));
         String line = null;
-        int i = 1;
-        while (((line = br.readLine()) != null) && i <= 500) {
+        while ((line = br.readLine()) != null) {
             String escaped = QueryParser.escape(line);
             Query query = new QueryParser("text", analyzer).parse(escaped);
-            TopDocs docs = indexSearcher.search(query, 10);
+            TopDocs docs = indexSearcher.search(query, 100);
             ScoreDoc[] hits = docs.scoreDocs;
-
-            System.out.println("Running query " + (i++) + ": \"" + escaped +
-                               "\"");
-            int j = 1;
             for (ScoreDoc hit : hits) {
                 Document doc = indexSearcher.doc(hit.doc);
-                System.out.println(" " + (j++) + ". " + doc.get("name"));
+                System.out.println("" + queryId + "\t_\t" + doc.get("name") +
+                                   "\t_\t" + hit.score + "\t_");
             }
+            ++queryId;
         }
 
         br.close();
