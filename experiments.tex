@@ -4,6 +4,10 @@
 
 Talk about parsers and POS taggers.
 
+Results in Fig~\ref{fig:all-nlp}.
+
+\input{all-nlp}
+
 \subsection{Information Retrieval}
 
 \meta/'s IR performance is compared with two well-known search engine toolkits:
@@ -12,12 +16,6 @@ Talk about parsers and POS taggers.
 Massachusetts Amherst and Carnegie Mellon University.
 
 \footnotetext[12]{\url{http://lucene.apache.org/}}
-
-\meta/'s ML performance is compared with \textsc{liblinear}~\cite{liblinear}, a
-well-known SVM library; \textsc{scikit-learn}~\cite{scikit} a Python ML library;
-and \textsc{SVMMulticlass}~\cite{svmmulticlass}, a competitor to
-\textsc{liblinear}. Statistics for datasets used in both parts can be found in
-Fig~\ref{fig:ir}.
 
 First, we compare the speed at which the search engines can index each corpus
 (Fig~\ref{fig:datasets}). We index unigram words with the identical
@@ -61,7 +59,15 @@ retrieval framework. In indexing speed, it is between \textsc{Lemur} and
 \textsc{Lucene}'s Homepages index. In terms of query speed, again \meta/ falls
 between \textsc{Lemur} and \textsc{Lucene}.
 
+\input{all-ir}
+
 \subsection{Machine Learning}
+
+\meta/'s ML performance is compared with \textsc{liblinear}~\cite{liblinear}, a
+well-known SVM library; \textsc{scikit-learn}~\cite{scikit} a Python ML library;
+and \textsc{SVMMulticlass}~\cite{svmmulticlass}, a competitor to
+\textsc{liblinear}. Statistics for datasets used in both parts can be found in
+Fig~\ref{fig:ir}.
 
 For the machine learning evaluation, we focus on linear classification across
 toolkits. Many applications in \meta/ are in a textual domain, and linear
@@ -88,4 +94,3 @@ machine learning domain.
 
 \input{dataset-stats}
 \input{classification-exp}
-\input{all-ir}
