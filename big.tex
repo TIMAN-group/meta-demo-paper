@@ -19,7 +19,7 @@ the \texttt{sgd} classifier. Where \textsc{liblinear} failed to run,
 Besides using \meta/'s rich built-in feature generation, it is possible to
 directly use \textsc{libsvm}-formatted data. This allows preprocessed datasets
 to be run under \meta/'s algorithms. Additionally, \meta/'s
-\texttt{forward\_index} (used for classification), is stored as \textsc{libsvm}
-format. Thus the reverse is also true: you may do feature generation with
-\meta/, and use its index as input to any other program that supports
-\textsc{libsvm} format.
+\texttt{forward\_index} (used for classification), is easily convertible to
+\textsc{libsvm} format. Thus the reverse is also true: you may do feature
+generation with \meta/, and use it to generate input for any other program that
+supports \textsc{libsvm} format.

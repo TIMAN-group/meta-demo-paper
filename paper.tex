@@ -7,11 +7,11 @@
 \usepackage{latexsym}
 \usepackage{amssymb}
 \usepackage{rotating}
-\usepackage[hidelinks]{hyperref}
 
 \aclfinalcopy % Uncomment this line for the final submission
 %\def\aclpaperid{***} %  Enter the acl Paper ID here
 
+\newcommand{\url}[1]{\begin{texttt}#1\end{texttt}}
 \newcommand{\brot}[1]{\begin{turn}{70}\textbf{#1}\end{turn}}
 
 \title{MeTA: A Modern C++ Data Sciences Toolkit} % keep "C++"?
@@ -30,12 +30,13 @@
 
 \begin{abstract}
 \meta/ is developed to unite machine learning, information retrieval, and
-natural language processing algorithms in one easy-to-use toolkit. Its focus on
-indexing allows it to perform well on large datasets and support online
-classification. \meta/'s liberal open source license encourages contributions,
-and its extensive online documentation and tutorials make this process
-straightforward. We perform experiments and show \meta/'s performance is
-competitive with or better than existing software.
+natural language processing algorithms in one easy-to-use toolkit. Its focus
+on indexing allows it to perform well on large datasets, supporting online
+classification and other out-of-core algorithms. \meta/'s liberal open
+source license encourages contributions, and its extensive online
+documentation and tutorials make this process straightforward. We run
+experiments and show \meta/'s performance is competitive with or better than
+existing software.
 \end{abstract}
 
 \input{framework}

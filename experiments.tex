@@ -1,11 +1,12 @@
 \section{Experiments}
+\label{sec:experiments}
 
 \subsection{Natural Language Processing}
 
 Talk about parsers and POS taggers.
 
-Results in Fig~\ref{fig:nlp-pos}.
-Results in Fig~\ref{fig:nlp-shallow}.
+Results in Table~\ref{table:nlp-pos}.
+Results in Table~\ref{table:nlp-shallow}.
 
 \input{nlp-datasets}
 \input{nlp-pos}
@@ -31,19 +32,17 @@ length of 32 characters is set, and the original documents are not stored in the
 index. In addition, each corpus is converted into a single file with one
 document per line to reduce the effects of many file operations.
 
-\footnotetext[7]{\url{http://ir.dcs.gla.ac.uk/test_collections/blogs06info.html}}
-\footnotetext[8]{\url{http://ir.dcs.gla.ac.uk/test_collections/gov2-summary.htm}}
+\footnotetext[7]{\url{http://ir.dcs.gla.ac.uk/test\_collections/blogs06info.html}}
+\footnotetext[8]{\url{http://ir.dcs.gla.ac.uk/test\_collections/gov2-summary.htm}}
 
 Further, all IR experiments were run on a personal laptop with an Intel quad
 core i7-2760QM (2.40GHz) CPU, eight gigabytes of memory, and a 7200 RPM disk.
 
-We compare the following: indexing speed (Fig~\ref{fig:ir-indexing}), index size
-(Fig~\ref{fig:ir-index-size}), query speed (Fig~\ref{fig:ir-query-speed}), and
-query accuracy (Fig~\ref{fig:ir-map}). The queries we use are the standard TREC
-topics associated with each dataset.
-
-%Ideally, since we are not storing the full text, the indexes should be smaller
-%than the original data, though this is not always the case.
+We compare the following: indexing speed (Table~\ref{table:ir-indexing}), index
+size (Table~\ref{table:ir-index-size}), query speed
+(Table~\ref{table:ir-query-speed}), and query accuracy
+(Table~\ref{table:ir-map}). The queries we use are the standard TREC topics
+associated with each dataset.
 
 \input{ir-datasets}
 \input{ir-index-size}
@@ -57,7 +56,7 @@ topics associated with each dataset.
 well-known SVM library; \textsc{scikit-learn}~\cite{scikit} a Python ML library;
 and \textsc{SVMMulticlass}~\cite{svmmulticlass}, a competitor to
 \textsc{liblinear}. Statistics for datasets used in both parts can be found in
-Fig~\ref{fig:ml-datasets}.
+Table~\ref{table:ml-datasets}.
 
 For the machine learning evaluation, we focus on linear classification across
 toolkits. Many applications in \meta/ are in a textual domain, and linear
@@ -76,10 +75,10 @@ tokenization and training/test splits available on the LIBSVM data
 website~\footnotemark[11].
 
 \footnotetext[6]{\url{http://qwone.com/~jason/20Newsgroups/}}
-\footnotetext[10]{\url{https://www.yelp.com/academic_dataset}}
+\footnotetext[10]{\url{https://www.yelp.com/academic\_dataset}}
 \footnotetext[11]{\url{http://www.csie.ntu.edu.tw/~cjlin/libsvmtools/datasets/}}
 
-In Fig~\ref{fig:ml-exp}, we can see that \meta/ performs well both in
+In Table~\ref{table:ml-exp}, we can see that \meta/ performs well both in
 terms of speed and accuracy, and presents itself as a viable option in the
 machine learning domain.
 

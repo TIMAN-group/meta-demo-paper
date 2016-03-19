@@ -1,10 +1,10 @@
 \section{A Unified Framework}
 
-The existing environment of open source software solutions for machine learning
+The existing environment of open source software solutions for text processing
 is fragmented: there is rarely a single location for a wide variety of
 algorithms. Tools tend to specialize on one particular area, and as such there
-is a wide variety of tools one must sample when performing different machine
-learning tasks. For text-mining tasks, this is even more apparent; it is
+is a wide variety of tools one must sample when performing different data
+science tasks. For text-mining tasks, this is even more apparent; it is
 extremely difficult (if not impossible) to find tools that support both
 traditional information retrieval tasks (like tokenization, indexing, and
 search) alongside traditional machine learning tasks (like document
@@ -20,20 +20,20 @@ upon a single input format, so a certain amount of ``data munging'' is now
 required. All of this detracts from the actual research task at hand, which has
 a marked impact on the speed with which new ideas are discovered.
 
-The goal of the \meta/ project is to address these issues. In particular,
-we provide a unifying framework for existing machine learning algorithms,
-allowing researchers to quickly run controlled experiments. We have modularized
-the feature generation, instance representation, data storage formats, and
-algorithm implementations; this allows for researchers to make seamless
-transitions along any of these dimensions with minimal effort.
+The goal of the \meta/ project is to address these issues. In particular, we
+provide a unifying framework for existing machine learning and natural language
+processing algorithms, allowing researchers to quickly run controlled
+experiments. We have modularized the feature generation, instance
+representation, data storage formats, and algorithm implementations; this allows
+for researchers, practitioners, and students to make seamless transitions along
+any of these dimensions with minimal effort.
 
-We have a liberal licensing scheme for \meta/. It is dual-licensed under
-the University of Illinois/NCSA Open Source Licence and the MIT License. We use
-these permissive licenses deliberately to allow for \meta/'s
-incorporation into commercial products: we feel that the use of a copyleft
-license creates unnecessary barriers between the code we develop as researchers
-and the applications of our techniques to areas outside of the research
-community.
+We have a liberal licensing scheme for \meta/. It is dual-licensed under the
+University of Illinois/NCSA Open Source Licence and the MIT License. We use
+these permissive licenses deliberately to allow for \meta/'s incorporation into
+commercial products: we feel that the use of a copyleft license creates
+unnecessary barriers between the code we develop as researchers and the
+applications of our techniques to areas outside of the research community.
 
 \begin{table*}[t]
     \begin{center}
@@ -53,9 +53,31 @@ community.
         Language models & & & & & & & & & \checkmark \\
         Word embeddings & & & & & & & & & \checkmark \\
         Graph algorithms & & & & & & & & & \checkmark \\
+        Multithreading & & & & & & & & & \checkmark \\
         \hline
     \end{tabular}
+    \label{tab:feature-comp}
     \caption{Feature comparison of NLP, IR, and ML toolkits.}
     }
     \end{center}
 \end{table*}
+
+Table~\ref{tab:feature-comp} compares \meta/'s many features across various
+toolkits. Due to space constraints, we only delve into the NLP, IR, and ML
+components in section~\ref{sec:experiments}. We briefly outline all components
+here:
+
+% might just convert to paragraphs with bolded "headers"
+\begin{itemize}
+    \item Feature generation
+    \item Search
+    \item Classification
+    \item Regression
+    \item POS tagging
+    \item Parsing
+    \item Topic models
+    \item Language models
+    \item Word embeddings
+    \item Graph algorithms
+    \item Multithreading
+\end{itemize}
