@@ -13,7 +13,9 @@ processing the data again}.
 Since all applications use these indexes, \meta/ is able to support
 out-of-core classification with some classifiers. We ran our large
 classification dataset, rcv1~\cite{rcv1}, with limited memory (only 95MB) using
-the \texttt{sgd} classifier. Where \textsc{liblinear} failed to run,
+the \texttt{sgd} classifier.
+\todo{Update info about online classification.}
+Where \textsc{liblinear} failed to run,
 \meta/ was able to finish the classification in just under two minutes.
 
 Besides using \meta/'s rich built-in feature generation, it is possible to
