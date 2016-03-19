@@ -7,6 +7,12 @@
 \usepackage{latexsym}
 \usepackage{amssymb}
 \usepackage{rotating}
+
+% see: http://tex.stackexchange.com/questions/124410/hyperref-modifies-bibliography-style-of-acl-style-files
+\makeatletter
+\newcommand{\@BIBLABEL}{\@emptybiblabel}
+\newcommand{\@emptybiblabel}[1]{}
+\makeatother
 \usepackage[hidelinks]{hyperref}
 
 \aclfinalcopy % Uncomment this line for the final submission
