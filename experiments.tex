@@ -2,7 +2,9 @@
 \label{sec:experiments}
 
 To demonstrate \meta/'s effectiveness in three crucial fields, we evaluate its
-performance in NLP, IR, and ML tasks.
+performance in NLP, IR, and ML tasks. All experiments were performed on a
+workstation with an Intel(R) Core(TM) i7-5820K CPU, 16 GB of RAM, and a 4
+TB 5900 RPM disk.
 
 \subsection{Natural Language Processing}
 
@@ -18,16 +20,17 @@ Results in Table~\ref{table:nlp-shallow}.
 \subsection{Information Retrieval}
 
 \meta/'s IR performance is compared with two well-known search engine toolkits:
-\textsc{Lucene}'s latest version 5.5.0\footnotemark[12], a top-level Apache
-venture; and \textsc{Indri}'s latest version 5.10~\cite{lemur}, a joint
-collaboration between the University of Massachusetts Amherst and Carnegie
-Mellon University. Note that \textsc{Indri} is also known as \textsc{Lemur}; in
-this paper, we choose to use the former for consistency.
+\textsc{Lucene}'s latest version 5.5.0\footnotemark[12] and
+\textsc{Indri}'s version 5.9\footnote{Indri 5.10 does not provide source
+    code packages and thus could not be used. It is also known as
+\textsc{Lemur}.}~\cite{lemur}.
 
 \footnotetext[12]{\url{http://lucene.apache.org/}}
 
 For the IR experiments, we use the TREC blog06\footnotemark[7] permalink
 documents and TREC gov2 corpus\footnotemark[8].
+\todo{Does TREC have a proceedings thing to cite instead of footnoting
+this?}
 To ensure a more uniform indexing environment, all HTML is cleaned, terms are
 lower-cased, stop words are removed from a common list of 431 stop words,
 Porter2 (\meta/) or Porter (Indri, Lucene) stemming is performed, a maximum word
@@ -38,8 +41,6 @@ document per line to reduce the effects of many file operations.
 \footnotetext[7]{\url{http://ir.dcs.gla.ac.uk/test_collections/blogs06info.html}}
 \footnotetext[8]{\url{http://ir.dcs.gla.ac.uk/test_collections/gov2-summary.htm}}
 
-Further, all IR experiments were run on a personal laptop with an Intel quad
-core i7-2760QM (2.40GHz) CPU, eight gigabytes of memory, and a 7200 RPM disk.
 
 We compare the following: indexing speed (Table~\ref{table:ir-indexing}), index
 size (Table~\ref{table:ir-index-size}), query speed
@@ -48,8 +49,8 @@ size (Table~\ref{table:ir-index-size}), query speed
 associated with each dataset.
 
 \input{ir-datasets}
-\input{ir-index-size}
 \input{ir-indexing}
+\input{ir-index-size}
 \input{ir-query-speed}
 \input{ir-map}
 
@@ -58,16 +59,11 @@ associated with each dataset.
 \meta/'s ML performance is compared with \textsc{liblinear}~\cite{liblinear}, a
 well-known SVM library; \textsc{scikit-learn}~\cite{scikit} a Python ML library;
 and \textsc{SVMMulticlass}~\cite{svmmulticlass}, a competitor to
-\textsc{liblinear}. Statistics for datasets used in both parts can be found in
+\textsc{liblinear}. We focus on linear classification across these tools.
+Statistics for the five datasets used can be found in
 Table~\ref{table:ml-datasets}.
 
-For the machine learning evaluation, we focus on linear classification across
-toolkits. Many applications in \meta/ are in a textual domain, and linear
-classification lends itself to the high-dimensional space that comes with text
-documents. All experiments are performed on a system with a dual core Intel Core
-i5 CPU (M460) clocked at 2.53GHz and eight gigabytes of RAM.
-
-Four datasets (20news\footnotemark[6], Newegg, and the Yelp Academic
+Four of the datasets (20news\footnotemark[6], Newegg, and the Yelp Academic
 Dataset\footnotemark[10]) are textual datasets. The Newegg (crawled ourselves)
 and Yelp datasets are review datasets, and we consider only a partial list of
 the whole dataset where we have removed all three-star reviews. We used MeTA for
