@@ -1,0 +1,28 @@
+stop-words = "git-meta/data/lemur-stopwords.txt"
+libsvm-modules = "git-meta/deps/libsvm-modules/"
+prefix = "/media"
+function-words = "git-meta/data/function-words.txt"
+punctuation = "git-meta/data/sentence-boundaries/sentence-punctuation.txt"
+start-exceptions = "git-meta/data/sentence-boundaries/sentence-start-exceptions.txt"
+end-exceptions = "git-meta/data/sentence-boundaries/sentence-end-exceptions.txt"
+
+query-path = "/media/gov2/qrels/gov2-queries.txt"
+query-start = 701
+#query-judgements = "/media/gov2/qrels/gov2-qrels-mapped.txt"
+
+corpus = "line.toml"
+dataset = "gov2"
+forward-index = "gov2-fwd"
+inverted-index = "gov2-inv"
+
+indexer-ram-budget = 4096
+
+[[analyzers]]
+method = "ngram-word"
+ngram = 1
+filter = "default-unigram-chain"
+
+[ranker]
+method = "bm25"
+k1 = 0.9
+b = 0.4
