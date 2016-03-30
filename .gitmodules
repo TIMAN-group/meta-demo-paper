@@ -1,0 +1,3 @@
+[submodule "meta/git-meta"]
+	path = meta/git-meta
+	url = https://github.com/meta-toolkit/meta.git

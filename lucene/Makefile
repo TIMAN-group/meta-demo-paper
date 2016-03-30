@@ -3,8 +3,14 @@ CP=-cp lucene-5.5.0/core/lucene-core-5.5.0.jar:lucene-5.5.0/analysis/common/luce
 all:
 	javac $(CP) *.java
 
-index:
-	java $(CP) Index
+index-blog06:
+	java $(CP) Index blog06
 
-search:
-	java $(CP) Search
+index-gov2:
+	java $(CP) Index gov2
+
+search-blog06:
+	java $(CP) Search blog06 851
+
+search-gov2:
+	java $(CP) Search gov2 701

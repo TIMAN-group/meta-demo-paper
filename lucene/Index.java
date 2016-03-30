@@ -20,12 +20,10 @@ import org.apache.lucene.index.IndexWriterConfig.OpenMode;
 import org.apache.lucene.store.FSDirectory;
 import org.apache.lucene.util.Version;
 
+//import .NoPositionsTextField;
+
 public
 class Index {
-    final static String dataset = "gov2";
-    final static String prefix = "/home/sean/data/" + dataset + "/";
-    final static String indexPath = dataset + "-index";
-
    private
     static IndexWriter setupIndex(String indexPath) throws IOException {
         Analyzer analyzer = new SpecialAnalyzer();
@@ -41,6 +39,11 @@ class Index {
 
    public
     static void main(String[] args) throws Exception {
+
+        final String dataset = args[0];
+        final String prefix = "/media/" + dataset + "/";
+        final String indexPath = dataset + "-index";
+
         Date start = new Date();
 
         IndexWriter writer = setupIndex(indexPath);
@@ -49,22 +52,25 @@ class Index {
         BufferedReader br = new BufferedReader(new FileReader(inputFile));
         BufferedReader namebr = new BufferedReader(new FileReader(metadata));
         String line = null;
+        String name = null;
         int indexed = 0;
-        while ((line = br.readLine()) != null) {
-            String name = namebr.readLine();
-            if (name == null) break;
+        while ((line = br.readLine()) != null &&
+               (name = namebr.readLine()) != null) {
             Document doc = new Document();
             doc.add(new StringField("name", name, Field.Store.YES));
             doc.add(new TextField("text", line, Field.Store.NO));
+            // doc.add(new NoPositionsTextField("text", line, Field.Store.NO));
             writer.addDocument(doc);
             ++indexed;
-            if (indexed % 1000 == 0)
+            if (indexed % 10000 == 0)
                 System.out.println(" Indexed " + indexed + " docs...");
         }
 
         br.close();
         namebr.close();
         writer.close();
+
+        System.out.println("Indexed " + indexed + " total docs.");
 
         Date end = new Date();
         long seconds = (end.getTime() - start.getTime()) / 1000;

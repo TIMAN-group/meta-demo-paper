@@ -5,6 +5,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.Date;
 
+import org.apache.lucene.search.CollectionStatistics;
 import org.apache.lucene.analysis.core.StopFilter;
 import org.apache.lucene.analysis.Analyzer;
 import org.apache.lucene.document.Document;
@@ -26,31 +27,37 @@ import org.apache.lucene.util.Version;
 
 public
 class Search {
-    final static String dataset = "gov2";
-    final static String prefix = "/home/sean/data/" + dataset + "/";
-    final static String indexPath = dataset + "-index";
-    final static String queryList = dataset + "-queries.txt";
-    static int queryId = 300;  // start query ID
-
    public
     static void main(String[] args) throws Exception {
+        final String dataset = args[0];
+        final String prefix = "/media/" + dataset + "/";
+        final String indexPath = dataset + "-index";
+        final String queryList = dataset + "-queries.txt";
+        int queryId = Integer.parseInt(args[1]);  // start query ID
+
         Date start = new Date();
         IndexReader reader =
             DirectoryReader.open(FSDirectory.open(Paths.get(indexPath)));
         IndexSearcher indexSearcher = new IndexSearcher(reader);
-        indexSearcher.setSimilarity(new BM25Similarity());
+        indexSearcher.setSimilarity(new BM25Similarity(0.9f, 0.4f));
         Analyzer analyzer = new SpecialAnalyzer();
         BufferedReader br = new BufferedReader(new FileReader(queryList));
         String line = null;
+
+        CollectionStatistics stats = indexSearcher.collectionStatistics("text");
+        System.err.println("Non-empty docs: " + stats.docCount());
+        System.err.println("Total docs: " + stats.maxDoc());
         while ((line = br.readLine()) != null) {
             String escaped = QueryParser.escape(line);
             Query query = new QueryParser("text", analyzer).parse(escaped);
-            TopDocs docs = indexSearcher.search(query, 100);
+            TopDocs docs = indexSearcher.search(query, 1000);
             ScoreDoc[] hits = docs.scoreDocs;
+            int rank = 1;
             for (ScoreDoc hit : hits) {
                 Document doc = indexSearcher.doc(hit.doc);
                 System.out.println("" + queryId + "\t_\t" + doc.get("name") +
-                                   "\t_\t" + hit.score + "\t_");
+                                   "\t" + rank + "\t" + hit.score + "\tlucene");
+                ++rank;
             }
             ++queryId;
         }
@@ -59,6 +66,6 @@ class Search {
         Date end = new Date();
 
         long mseconds = end.getTime() - start.getTime();
-        System.out.println(mseconds + "ms elapsed");
+        System.err.println(mseconds + "ms elapsed");
     }
 }
