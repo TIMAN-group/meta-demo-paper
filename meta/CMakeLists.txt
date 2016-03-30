@@ -93,6 +93,6 @@ add_subdirectory(git-meta EXCLUDE_FROM_ALL)
 
 find_package(Threads REQUIRED)
 
-add_library(trec-eval src/trec_eval.cpp)
+add_executable(trec-eval src/trec_eval.cpp)
 target_link_libraries(trec-eval cpptoml meta-util meta-analyzers meta-ranker
   ${CMAKE_THREAD_LIBS_INIT})
