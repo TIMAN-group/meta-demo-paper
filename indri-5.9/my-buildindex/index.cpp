@@ -10,7 +10,7 @@
 std::vector<std::string> get_stopwords()
 {
     std::cerr << "Load stopwords" << std::endl;
-    std::ifstream in{"lemur-stopwords.txt"};
+    std::ifstream in{"../lemur-stopwords.txt"};
     std::vector<std::string> stopwords;
     std::string word;
     while (in >> word)
@@ -57,7 +57,7 @@ void create_line_index(indri::api::IndexEnvironment& ienv, size_t memory,
         ++num_indexed;
         if (num_indexed % 10000 == 0)
         {
-            std::cout << " Indexed " << num_indexed << " docs...    \r";
+            std::cerr << " Indexed " << num_indexed << " docs...    \r";
             cout.flush();
         }
     }
@@ -68,15 +68,16 @@ void create_line_index(indri::api::IndexEnvironment& ienv, size_t memory,
 
 int main(int argc, char* argv[])
 {
-    if (argc != 3)
+    if (argc != 4)
     {
-        std::cerr << "Usage: " << argv[0] << " dataset_name build_index"
-                  << std::endl;
+        std::cerr << "Usage: " << argv[0]
+                  << " dataset_name build_index query_id" << std::endl;
         return 1;
     }
 
     bool build_index = (argv[2][0] == 'y' || argv[2][0] == 't');
     std::string dataset{argv[1]};
+    auto query_id = std::stoul(argv[3]);
     size_t memory = 2ul * 1024ul * 1024ul * 1024ul; // 2 GB
 
     auto start = std::chrono::steady_clock::now();
@@ -97,7 +98,6 @@ int main(int argc, char* argv[])
     std::ifstream queries{dataset + "-queries.txt"};
     std::string content;
 
-    size_t query_id = 300;
     indri::api::QueryEnvironment qenv;
     std::string name = dataset + "-index";
     qenv.addIndex(name);
@@ -106,7 +106,7 @@ int main(int argc, char* argv[])
     start = std::chrono::steady_clock::now();
     while (std::getline(queries, content))
     {
-        size_t num_results = 100;
+        size_t num_results = 1000;
 
         std::vector<indri::api::ScoredExtentResult> results
             = qenv.runQuery(content, num_results);
