@@ -58,7 +58,7 @@ void create_line_index(indri::api::IndexEnvironment& ienv, size_t memory,
         if (num_indexed % 10000 == 0)
         {
             std::cerr << " Indexed " << num_indexed << " docs...    \r";
-            cout.flush();
+            cerr.flush();
         }
     }
 
