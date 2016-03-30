@@ -1,6 +1,8 @@
 // @see
 // https://github.com/lintool/IR-Reproducibility/blob/master/systems/lucene/ingester/src/main/java/luceneingester/NoPositionsTextField.java
 
+package ireval;
+
 import org.apache.lucene.document.Field;
 import org.apache.lucene.document.FieldType;
 import org.apache.lucene.index.IndexOptions;

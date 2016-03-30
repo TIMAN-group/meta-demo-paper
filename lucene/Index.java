@@ -20,7 +20,7 @@ import org.apache.lucene.index.IndexWriterConfig.OpenMode;
 import org.apache.lucene.store.FSDirectory;
 import org.apache.lucene.util.Version;
 
-//import .NoPositionsTextField;
+import ireval.NoPositionsTextField;
 
 public
 class Index {
@@ -58,8 +58,7 @@ class Index {
                (name = namebr.readLine()) != null) {
             Document doc = new Document();
             doc.add(new StringField("name", name, Field.Store.YES));
-            doc.add(new TextField("text", line, Field.Store.NO));
-            // doc.add(new NoPositionsTextField("text", line, Field.Store.NO));
+            doc.add(new NoPositionsTextField("text", line));
             writer.addDocument(doc);
             ++indexed;
             if (indexed % 10000 == 0)
