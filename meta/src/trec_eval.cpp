@@ -15,8 +15,10 @@
 
 using namespace meta;
 
-int main(int argc, char* argv[]) {
-    if (argc != 2) {
+int main(int argc, char* argv[])
+{
+    if (argc != 2)
+    {
         std::cerr << "Usage:\t" << argv[0] << " config.toml" << std::endl;
         return 1;
     }
@@ -48,22 +50,28 @@ int main(int argc, char* argv[]) {
 
     std::string content;
     auto query_id = *query_id_param;
-    auto elapsed_seconds = common::time([&]() {
-        while (std::getline(queries, content)) {
-            corpus::document query{doc_id{0}};
-            query.content(content);
-            auto ranking = ranker->score(*idx, query, 1000);
-            auto result_num = 1;
-            for (auto& result : ranking) {
-                auto mdata = idx->metadata(result.d_id);
-                std::cout << query_id << "\t_\t"
-                          << *mdata.get<std::string>("name") << "\t"
-                          << result_num << "\t" << result.score << "\tMeTA\n";
-                if (result_num++ == 1000) break;
-            }
-            ++query_id;
-        }
-    });
+    auto elapsed_seconds
+        = common::time([&]()
+                       {
+                           while (std::getline(queries, content))
+                           {
+                               corpus::document query{doc_id{0}};
+                               query.content(content);
+                               auto ranking = ranker->score(*idx, query, 1000);
+                               auto result_num = 1;
+                               for (auto& result : ranking)
+                               {
+                                   auto mdata = idx->metadata(result.d_id);
+                                   std::cout << query_id << "\t_\t"
+                                             << *mdata.get<std::string>("name")
+                                             << "\t" << result_num << "\t"
+                                             << result.score << "\tMeTA\n";
+                                   if (result_num++ == 1000)
+                                       break;
+                               }
+                               ++query_id;
+                           }
+                       });
 
     std::cerr << "Elapsed time: " << elapsed_seconds.count() << "ms"
               << std::endl;
