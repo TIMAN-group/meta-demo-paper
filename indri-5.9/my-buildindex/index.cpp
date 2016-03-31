@@ -78,7 +78,7 @@ int main(int argc, char* argv[])
     bool build_index = (argv[2][0] == 'y' || argv[2][0] == 't');
     std::string dataset{argv[1]};
     auto query_id = std::stoul(argv[3]);
-    size_t memory = 2ul * 1024ul * 1024ul * 1024ul; // 2 GB
+    size_t memory = 4ul * 1024ul * 1024ul * 1024ul; // 4 GB
 
     auto start = std::chrono::steady_clock::now();
 
