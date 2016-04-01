@@ -26,19 +26,24 @@ Results in Table~\ref{table:nlp-shallow}.
 \textsc{Lemur}.}~\cite{lemur}.
 
 For the IR experiments, we use the TREC blog06~\cite{blog06} permalink documents
-and TREC gov2 corpus~\cite{gov2} To ensure a more uniform indexing environment,
-all HTML is cleaned, terms are lower-cased, stop words are removed from a common
-list of 431 stop words, Porter2 (\meta/) or Porter (Indri, Lucene) stemming is
-performed, a maximum word length of 32 characters is set, and the original
-documents are not stored in the index. In addition, each corpus is converted
-into a single file with one document per line to reduce the effects of many file
+and TREC gov2 corpus~\cite{gov2}. To ensure a more uniform indexing environment,
+all HTML is cleaned before indexing. In addition, each corpus is converted into
+a single file with one document per line to reduce the effects of many file
 operations.
+
+During indexing, terms are lower-cased, stop words are removed from a common
+list of 431 stop words, Porter2 (\meta/) or Porter (Indri, Lucene) stemming is
+performed, a maximum word length of 32 characters is set, original documents are
+not stored in the index, and term position information is not
+stored\footnote{For Indri, we are unable to disable positions information
+storage.}.
 
 We compare the following: indexing speed (Table~\ref{table:ir-indexing}), index
 size (Table~\ref{table:ir-index-size}), query speed
 (Table~\ref{table:ir-query-speed}), and query accuracy
-(Table~\ref{table:ir-map}). The queries we use are the standard TREC topics
-associated with each dataset.
+(Table~\ref{table:ir-map}). We use the standard TREC queries associated with
+each dataset and score each system's search results with the standard
+\texttt{trec\_eval} program\footnote{\url{http://trec.nist.gov/trec_eval/}}.
 
 \input{ir-datasets}
 \input{ir-indexing}
