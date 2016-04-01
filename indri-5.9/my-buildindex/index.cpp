@@ -103,6 +103,7 @@ int main(int argc, char* argv[])
     qenv.addIndex(name);
     qenv.setMemory(memory);
     qenv.setStopwords(get_stopwords());
+    qenv.setBaseline("okapi,k1:0.9,b:0.4");
     start = std::chrono::steady_clock::now();
     while (std::getline(queries, content))
     {
