@@ -25,17 +25,14 @@ Results in Table~\ref{table:nlp-shallow}.
     code packages and thus could not be used. It is also known as
 \textsc{Lemur}.}~\cite{lemur}.
 
-For the IR experiments, we use the TREC
-blog06\footnote{\url{http://ir.dcs.gla.ac.uk/test_collections/blogs06info.html}}
-permalink documents and TREC gov2
-corpus\footnote{\url{http://ir.dcs.gla.ac.uk/test_collections/gov2-summary.htm}}.
-\todo{Does TREC have a proceedings thing to cite instead of footnoting this?} To
-ensure a more uniform indexing environment, all HTML is cleaned, terms are
-lower-cased, stop words are removed from a common list of 431 stop words,
-Porter2 (\meta/) or Porter (Indri, Lucene) stemming is performed, a maximum word
-length of 32 characters is set, and the original documents are not stored in the
-index. In addition, each corpus is converted into a single file with one
-document per line to reduce the effects of many file operations.
+For the IR experiments, we use the TREC blog06~\cite{blog06} permalink documents
+and TREC gov2 corpus~\cite{gov2} To ensure a more uniform indexing environment,
+all HTML is cleaned, terms are lower-cased, stop words are removed from a common
+list of 431 stop words, Porter2 (\meta/) or Porter (Indri, Lucene) stemming is
+performed, a maximum word length of 32 characters is set, and the original
+documents are not stored in the index. In addition, each corpus is converted
+into a single file with one document per line to reduce the effects of many file
+operations.
 
 We compare the following: indexing speed (Table~\ref{table:ir-indexing}), index
 size (Table~\ref{table:ir-index-size}), query speed
