@@ -20,33 +20,30 @@ Results in Table~\ref{table:nlp-shallow}.
 \subsection{Information Retrieval}
 
 \meta/'s IR performance is compared with two well-known search engine toolkits:
-\textsc{Lucene}'s latest version 5.5.0\footnotemark[12] and
+\textsc{Lucene}'s latest version 5.5.0\footnote{\url{http://lucene.apache.org/}} and
 \textsc{Indri}'s version 5.9\footnote{Indri 5.10 does not provide source
     code packages and thus could not be used. It is also known as
 \textsc{Lemur}.}~\cite{lemur}.
 
-\footnotetext[12]{\url{http://lucene.apache.org/}}
+For the IR experiments, we use the TREC blog06~\cite{blog06} permalink documents
+and TREC gov2 corpus~\cite{gov2}. To ensure a more uniform indexing environment,
+all HTML is cleaned before indexing. In addition, each corpus is converted into
+a single file with one document per line to reduce the effects of many file
+operations.
 
-For the IR experiments, we use the TREC blog06\footnotemark[7] permalink
-documents and TREC gov2 corpus\footnotemark[8].
-\todo{Does TREC have a proceedings thing to cite instead of footnoting
-this?}
-To ensure a more uniform indexing environment, all HTML is cleaned, terms are
-lower-cased, stop words are removed from a common list of 431 stop words,
-Porter2 (\meta/) or Porter (Indri, Lucene) stemming is performed, a maximum word
-length of 32 characters is set, and the original documents are not stored in the
-index. In addition, each corpus is converted into a single file with one
-document per line to reduce the effects of many file operations.
-
-\footnotetext[7]{\url{http://ir.dcs.gla.ac.uk/test_collections/blogs06info.html}}
-\footnotetext[8]{\url{http://ir.dcs.gla.ac.uk/test_collections/gov2-summary.htm}}
-
+During indexing, terms are lower-cased, stop words are removed from a common
+list of 431 stop words, Porter2 (\meta/) or Porter (Indri, Lucene) stemming is
+performed, a maximum word length of 32 characters is set, original documents are
+not stored in the index, and term position information is not
+stored\footnote{For Indri, we are unable to disable positions information
+storage.}.
 
 We compare the following: indexing speed (Table~\ref{table:ir-indexing}), index
 size (Table~\ref{table:ir-index-size}), query speed
 (Table~\ref{table:ir-query-speed}), and query accuracy
-(Table~\ref{table:ir-map}). The queries we use are the standard TREC topics
-associated with each dataset.
+(Table~\ref{table:ir-map}). We use the standard TREC queries associated with
+each dataset and score each system's search results with the standard
+\texttt{trec\_eval} program\footnote{\url{http://trec.nist.gov/trec_eval/}}.
 
 \input{ir-datasets}
 \input{ir-indexing}
@@ -63,19 +60,17 @@ and \textsc{SVMMulticlass}~\cite{svmmulticlass}, a competitor to
 Statistics for the five datasets used can be found in
 Table~\ref{table:ml-datasets}.
 
-Four of the datasets (20news\footnotemark[6], Newegg, and the Yelp Academic
-Dataset\footnotemark[10]) are textual datasets. The Newegg (crawled ourselves)
-and Yelp datasets are review datasets, and we consider only a partial list of
-the whole dataset where we have removed all three-star reviews. We used MeTA for
-tokenization and feature generation, applying the same constraints as we did for
-the indexing tests. Randomized training (two thirds) and test splits (one third)
-were generated for each of these datasets. For rcv1, we used the existing
-tokenization and training/test splits available on the LIBSVM data
-website~\footnotemark[11].
-
-\footnotetext[6]{\url{http://qwone.com/~jason/20Newsgroups/}}
-\footnotetext[10]{\url{https://www.yelp.com/academic_dataset}}
-\footnotetext[11]{\url{http://www.csie.ntu.edu.tw/~cjlin/libsvmtools/datasets/}}
+Four of the datasets
+(20news\footnote{\url{http://qwone.com/~jason/20Newsgroups/}}, Newegg, and the
+Yelp Academic Dataset\footnote{\url{https://www.yelp.com/academic_dataset}}) are
+textual datasets. The Newegg (crawled ourselves) and Yelp datasets are review
+datasets, and we consider only a partial list of the whole dataset where we have
+removed all three-star reviews. We used MeTA for tokenization and feature
+generation, applying the same constraints as we did for the indexing tests.
+Randomized training (two thirds) and test splits (one third) were generated for
+each of these datasets. For rcv1, we used the existing tokenization and
+training/test splits available on the LIBSVM data
+website~\footnote{\url{http://www.csie.ntu.edu.tw/~cjlin/libsvmtools/datasets/}}.
 
 In Table~\ref{table:ml-exp}, we can see that \meta/ performs well both in
 terms of speed and accuracy, and presents itself as a viable option in the
