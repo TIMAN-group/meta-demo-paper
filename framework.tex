@@ -39,20 +39,25 @@ reach the broadest audience possible.
     {\small
     \begin{tabular}{|l|c|c|c|c|c|c|c|c|}
         \hline
-        & Indri & Lucene & MALLET & LIBLINEAR & SVM$^{MULT}$ & scikit &
-        CoreNLP & \meta/ \\
+        & \textbf{Indri} & \textbf{Lucene} & \textbf{MALLET} &
+        \textbf{LIBLINEAR} & \textbf{SVM$^{MULT}$} & \textbf{scikit} &
+        \textbf{CoreNLP} & \textbf{\meta/} \\
         \hline
-        Feature generation & & & & & & & & \checkmark \\
-        Search & & & & & & & & \checkmark \\
-        Classification & & & & & & & & \checkmark \\
-        Regression & & & & & & & & \checkmark \\
-        POS tagging & & & & & & & & \checkmark \\
-        Parsing & & & & & & & & \checkmark \\
-        Topic models & & & & & & & & \checkmark \\
+        Feature generation & \checkmark & \checkmark & \checkmark & & &
+        \checkmark & \checkmark & \checkmark \\
+        Search & \checkmark & \checkmark & & & & & & \checkmark \\
+        Classification & & & \checkmark & \checkmark & \checkmark & \checkmark &
+        & \checkmark \\
+        Regression & & & \checkmark & \checkmark & \checkmark & \checkmark & &
+        \checkmark \\
+        POS tagging & & & \checkmark & & & & \checkmark & \checkmark \\
+        Parsing & & & & & & & \checkmark & \checkmark \\
+        Topic models & & & \checkmark & & & & & \checkmark \\
         Language models & & & & & & & & \checkmark \\
-        Word embeddings & & & & & & & & \checkmark \\
+        Word embeddings & & & & & & & \checkmark & \checkmark \\
         Graph algorithms & & & & & & & & \checkmark \\
-        Multithreading & & & & & & & & \checkmark \\
+        Multithreading & & \checkmark & \checkmark & & & \checkmark & \checkmark
+        & \checkmark \\
         \hline
     \end{tabular}
     \label{tab:feature-comp}
