@@ -21,6 +21,9 @@
 
 \newcommand{\brot}[1]{\begin{turn}{70}\textbf{#1}\end{turn}}
 
+\let\oldfootnotesize\footnotesize
+\renewcommand*{\footnotesize}{\oldfootnotesize\scriptsize}
+
 \title{MeTA: A Modern C++ Data Sciences Toolkit} % keep "C++"?
 \author{Sean Massung, Chase Geigle \and ChengXiang Zhai \\
             Computer Science Department, College of Engineering \\
