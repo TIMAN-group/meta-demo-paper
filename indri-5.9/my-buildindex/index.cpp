@@ -109,6 +109,12 @@ int main(int argc, char* argv[])
     {
         size_t num_results = 1000;
 
+        for (auto& ch: content)
+            if (!::isalpha(ch))
+                ch = ' ';
+
+        content = "#combine( " + content + " )";
+        std::cerr << content << std::endl;
         std::vector<indri::api::ScoredExtentResult> results
             = qenv.runQuery(content, num_results);
 
