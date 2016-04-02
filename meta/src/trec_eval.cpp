@@ -48,6 +48,7 @@ int main(int argc, char* argv[])
         throw std::runtime_error{
             "config file needs a \"query-start\" parameter"};
 
+    std::cout.sync_with_stdio(false);
     std::string content;
     auto query_id = *query_id_param;
     auto elapsed_seconds
