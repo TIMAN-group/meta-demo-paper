@@ -8,7 +8,19 @@ TB 5900 RPM disk.
 
 \subsection{Natural Language Processing}
 
-\todo{POS tagging, very short.}
+\input{nlp-pos}
+
+\meta/'s part-of-speech taggers for English provide quite reasonable
+performance. It provides a linear-chain CRF tagger (CRF) as well as an
+averaged perceptron based greedy tagger (AP). We report the token level
+accuracy on sections 22--24 of the Penn Treebank, with a few prior model
+results trained on sections 0--18 in Table~\ref{table:nlp-pos}. ``Human
+annotators'' is an estimate based on a 3\% error rate reported in the Penn
+Treebank README and is likely overly
+optimistic~\cite{Manning:2011:CICLing}. CoreNLP's model is the result of
+\newcite{Manning:2011:CICLing}, LTag-Spinal is from
+\newcite{Shen:2007:ACL}, and SCCN is from \newcite{Sogaard:2011:ACL-HLT}.
+Both of \meta/'s taggers are within $0.6\%$ of the existing literature.
 
 \input{nlp-parsing}
 

@@ -1,18 +1,21 @@
 \begin{table}[t]
 \centering
 {\small
-\begin{tabular}{|r|r|r|}
+\begin{tabular}{|r|c|r|}
     \hline
-    & \textbf{Token Accuracy} \\
+    & \textbf{Extra Data} & \textbf{Accuracy} \\
     \hline
-    Human annotators & 97.00\% \\
-    CoreNLP & 97.32\% \\
-    LTag-Spinal & 97.33\% \\
-    SCCN & 97.50\% \\
-    \meta/ & 97.03\% \\
+    Human annotators & & 97.0\% \\
+    CoreNLP & $\checkmark$ & 97.3\% \\
+    LTag-Spinal & & 97.3\% \\
+    SCCN & $\checkmark$ & 97.5\% \\
+    \meta/ (CRF)& & 96.7\% \\
+    \meta/ (AP)& & 96.9\% \\
     \hline
 \end{tabular}
 }
-\caption{(NLP) Part-of-speech tagging.}
+\caption{(NLP) Part-of-speech tagging token-level accuracies. ``Extra
+data'' implies the use of large amounts of extra unlabeled data (e.g.\ for
+distributional similarity features).}
 \label{table:nlp-pos}
 \end{table}
