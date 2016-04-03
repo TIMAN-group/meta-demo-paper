@@ -1,0 +1,6 @@
+Testing on treebank done [13.6 sec].
+pcfg LP/LR summary evalb: LP: 86.51 LR: 86.84 F1: 86.67 Exact: 32.03 N: 2416
+dep DA summary evalb: LP: 0.0 LR: 0.0 F1: 0.0 Exact: 0.0 N: 0
+factor LP/LR summary evalb: LP: 86.51 LR: 86.84 F1: 86.67 Exact: 32.03 N: 2416
+factor Tag summary evalb: LP: 0.0 LR: 0.0 F1: 0.0 Exact: 0.0 N: 2416
+Name:java       VmPeak:18013284 kB      VmRSS:1639552 kB        RSSMax:1639656 kB       user:38.77       sys:1.55        CPU:40.32       ChildRSSMax:2688 kB     Childuser:0     Childsys:0       ChildCPU:0      real:18.7188
