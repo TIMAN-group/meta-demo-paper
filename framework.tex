@@ -26,9 +26,8 @@ representation, data storage formats, and algorithm implementations; this allows
 for researchers, practitioners, and students to make seamless transitions along
 any of these dimensions with minimal effort.
 
-We have a liberal licensing scheme for \meta/. It is dual-licensed under the
-University of Illinois/NCSA Open Source Licence and the MIT License in order to
-reach the broadest audience possible.
+\meta/ is dual-licensed under the University of Illinois/NCSA Open Source
+Licence and the MIT License in order to reach the broadest audience possible.
 
 \begin{table*}[t]
     \begin{center}
@@ -68,18 +67,75 @@ processing (NLP), information retrieval (IR), and machine learning (ML)
 components in section~\ref{sec:experiments}. We briefly outline all components
 here:
 
-% might just convert to paragraphs with bolded "headers"
-\begin{itemize}
-    \item Feature generation
-    \todo{Mention demos where available.}
-    \item Search
-    \item Classification
-    \item Regression
-    \item POS tagging
-    \item Parsing
-    \item Topic models
-    \item Language models (LMs)
-    \item Word embeddings
-    \item Graph algorithms
-    \item Multithreading
-\end{itemize}
+\textbf{Feature generation}.
+\meta/ has a collection of tokenizers, filters, and analyzers that convert raw
+text into a feature representation. Basic features are $n$-gram words, but other
+analyzers make use of different parts of the toolkit, such as POS tag $n$-grams
+and parse tree features. An arbitrary number of feature representations may be
+combined; for example, a document could be represented as unigram words, bigram
+POS tags, and parse tree rewrite rules. Users can easily add their own feature
+types as well, such as sentence length distribution in a document.
+
+\textbf{Search}.
+The \meta/ search engine can store document feature vectors in an inverted index
+and score them with respect to a query. Rankers include vector space models such
+as Okapi BM25~\cite{bm25} and probabilistic models like Dirichlet prior
+smoothing~\cite{zhai-lm}. A search demo is
+online\footnote{\url{https://meta-toolkit.org/search-demo.html}}.
+
+\textbf{Classification}.
+\meta/ includes a stochastic gradient descent (SGD) implementation with
+pluggable loss functions, allowing the creation of an SVM classifier (among
+others). All-\emph{vs}-all and one-\emph{vs}-all ensemble methods for binary
+classifiers allow multiclass classification. Other classifiers such as na{\"i}ve
+Bayes and $k$-nearest neighbors also exist. A confusion matrix class and
+significance testing framework allow evaluation and comparison of different
+methods and feature representations.
+% cite SVM..?
+% feature scaling? too technical?
+
+\textbf{Regression}.
+Regression is implemented via SGD to predict real-valued responses from
+featurized documents. Evaluation metrics such as mean squared error and $R^2$
+score allow model comparison.
+
+\textbf{POS tagging}.
+\meta/ contains a linear-chain conditional random field for POS tagging and
+chunking applications, learned using $\ell_2$ regularized SGD~\cite{crf}. It
+also contains an efficient greedy averaged perceptron tagger.
+
+\textbf{Parsing}.
+A fast shift-reduce constituency parser using generalized averaged perceptron
+~\cite{const-parsing} is \meta/'s grammatical parser. Parse tree featurizers
+implement different types of structural tree representations~\cite{structural}.
+An NLP demo online presents tokenization, POS-tagging, and
+parsing\footnote{\url{https://meta-toolkit.org/nlp-demo.html}}.
+
+\textbf{Topic models}.
+\meta/ can learn topic models over any feature representation using collapsed
+variational Bayes~\cite{cvb}, collapsed Gibbs sampling~\cite{gibbs}, stochastic
+collapsed variational Bayes~\cite{scvb}, or approximate distributed
+LDA~\cite{pargibbs}.
+
+\textbf{$n$-gram language models} (LMs).
+\meta/ takes an ARPA-formatted
+input\footnote{\url{http://www.speech.sri.com/projects/srilm/manpages/ngram-format.5.html}}
+and creates a language model that can be queried for token sequence
+probabilities or used in downstream applications like
+SyntacticDiff~\cite{syndiff}.
+% MPH not merged yet, mention?
+
+\textbf{Word embeddings}.
+The GloVe algorithm~\cite{glove} is implemented in a streaming framework and
+also features an interactive semantic relationship demo. Word vectors can be
+used in other applications as part of the \meta/ API\@.
+
+\textbf{Graph algorithms}.
+Directed and undirected graph implementations exist and various algorithms such
+as betweenness centrality, PageRank, and myopic search are available. Random
+graph generation models like Watts-Strogatz and preferential attachment exist.
+For these algorithms see~\cite{networks}.
+
+\textbf{Multithreading}.
+When possible, all \meta/ algorithms and applications are parallelized to make
+full use of available resources using C++ threads.
