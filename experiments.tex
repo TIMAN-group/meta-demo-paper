@@ -8,14 +8,31 @@ TB 5900 RPM disk.
 
 \subsection{Natural Language Processing}
 
-Talk about parsers and POS taggers.
+\todo{POS tagging, very short.}
 
-Results in Table~\ref{table:nlp-pos}.
-Results in Table~\ref{table:nlp-shallow}.
+\input{nlp-parsing}
 
-\input{nlp-datasets}
-\input{nlp-pos}
-\input{nlp-shallow}
+Both \meta/ and CoreNLP provide implementations of shift-reduce
+constituency parsers, following the framework of \newcite{const-parsing}.
+These can be trained greedily or via beam search. We compared the parser
+implementations in \meta/ and CoreNLP along two dimensions---speed,
+measured in wall time, and memory consumption, measured as maximum resident
+set size---for both training and testing a greedy and beam search parser
+(with a beam size of 4). Training was performed on the standard training
+split (sections 2--21) of the Penn Treebank, with section 22 being used as
+a development set (only used by CoreNLP). Section 23 was held out for
+evaluation. The results are summarized in Table~\ref{table:nlp-parsing}.
+
+\meta/ consistently uses less RAM than CoreNLP, both at training
+time and testing time. Its training time is slower than CoreNLP
+for the greedy parser, but less than half of CoreNLP's training time for
+the beam parser. \meta/'s beam parser has worse labeled $F_1$ score, likely
+the result of its simpler model averaging strategy\footnote{At training
+time, both CoreNLP and \meta/ perform model averaging, but \meta/
+computes the average over all updates and CoreNLP performs
+cross-validation over a default of the best 8 models on the development
+set.}. Overall, however, \meta/'s shift-reduce parser is competitive and
+particularly lightweight.
 
 \subsection{Information Retrieval}
 

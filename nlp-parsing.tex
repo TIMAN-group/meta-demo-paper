@@ -1,0 +1,41 @@
+\begin{table*}[t]
+\centering
+{\small
+  \begin{tabular}{|l|r|r|r|r|r|r|}
+    \hline
+    &
+    \multicolumn{3}{c|}{\textbf{CoreNLP}} &
+    \multicolumn{3}{c|}{\textbf{\meta/}} \\
+    & \multicolumn{1}{c}{Training} & \multicolumn{1}{c}{Testing} &
+    \multicolumn{1}{c|}{$F_1$}
+    & \multicolumn{1}{c}{Training} & \multicolumn{1}{c}{Testing} &
+    \multicolumn{1}{c|}{$F_1$} \\
+    \hline
+    \multirow{2}{*}{\textbf{Greedy}}
+    % corenlp time + F1
+    & 7m 27s & 18.6s & \multirow{2}{*}{86.7}
+    % meta time + F1
+    & 17m 31s & 12.9s & \multirow{2}{*}{86.9} \\
+    % corenlp RAM
+    & 8.85 GB & 1.53 GB &
+    % meta RAM
+    & 0.79 GB & 0.29 GB & \\
+    \hline
+    \multirow{2}{*}{\textbf{Beam (4)}}
+    % corenlp time + F1
+    & 6h 10m 43s & 46.8s & \multirow{2}{*}{89.9}
+    % meta time + F1
+    & 2h 17m 25s & 59.2s & \multirow{2}{*}{88.1} \\
+    % corenlp RAM
+    & 10.84 GB & 3.83 GB &
+    % meta RAM
+    & 2.29 GB & 0.94 GB & \\
+    \hline
+  \end{tabular}
+  \caption{(NLP) Training/testing performance for the shift-reduce
+    constituency parsers. All models were trained for 40 iterations on the
+    standard training split of the Penn Treebank. Accuracy is reported as
+    labeled $F_1$ from \texttt{evalb} on section 23.}
+  \label{table:nlp-parsing}
+}
+\end{table*}
