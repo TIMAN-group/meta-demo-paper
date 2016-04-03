@@ -42,10 +42,18 @@ We compare the following: indexing speed (Table~\ref{table:ir-indexing}), index
 size (Table~\ref{table:ir-index-size}), query speed
 (Table~\ref{table:ir-query-speed}), and query accuracy
 (Table~\ref{table:ir-map}). We use the standard TREC queries associated with
-each dataset and score each system's search results with the standard
+each dataset and score each system's search results with the usual
 \texttt{trec\_eval} program\footnote{\url{http://trec.nist.gov/trec_eval/}}.
 
-\todo{Note about parallel indexing with Lucene and Indri}
+\meta/ leads in indexing speed, though we note that \meta/'s default
+indexer is multithreaded and \textsc{Lucene} does not provide a parallel
+one\footnote{Additionally, we did not feel that writing a correct and threadsafe
+indexer as a user is something to be reasonably expected.}. \meta/ creates the
+smallest index for gov2 while \textsc{Lucene} creates the smallest index for
+blog06; \textsc{Indri} greatly lags behind both. \meta/ follows \textsc{Lucene}
+closely in retrieval speed, with \textsc{Indri} again lagging. As expected,
+query performance between the three systems is relatively even, and we attribute
+any small difference in MAP or precision to idiosyncrasies during tokenization.
 
 \input{ir-datasets}
 \input{ir-indexing}
