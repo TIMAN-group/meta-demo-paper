@@ -1,0 +1,12 @@
+prefix = "/home/chase/projects/meta-data"
+
+[parser]
+prefix = "beam-parser"
+treebank = "penn-treebank" # relative to data prefix
+train-algorithm = "beam-search"
+beam-size = 4
+corpus = "wsj"
+section-size = 99
+train-sections = [2, 21]
+dev-sections = [22, 22]
+test-sections = [23, 23]
