@@ -10,7 +10,7 @@ layer---interfaces solely with indexes. This means that we may use the same
 index for running an SVM as we do to evaluate a ranking function, \emph{without
 processing the data again}.
 
-Since all applications use these indexes, \meta/ is able to support out-of-core
+Since all applications use these indexes, \meta/ supports out-of-core
 classification with some classifiers. We ran our large classification dataset
 that doesn't fit in memory---Webspam~\citep{Webb:2006:CEAS}---using the
 \texttt{sgd} classifier. Where \textsc{liblinear} failed to run, \meta/ was able
@@ -20,7 +20,7 @@ Besides using \meta/'s rich built-in feature generation, it is possible to
 directly use \textsc{libsvm}-formatted data. This allows preprocessed datasets
 to be run under \meta/'s algorithms. Additionally, \meta/'s
 \texttt{forward\_index} (used for classification), is easily convertible to
-\textsc{libsvm} format. Thus the reverse is also true: you may do feature
+\textsc{libsvm} format. The reverse is also true: you may do feature
 generation with \meta/, and use it to generate input for any other program that
 supports \textsc{libsvm} format.
 
@@ -65,8 +65,8 @@ functions, and classifiers with full integration to the toolkit
 may specify user-defined classes in the config file). The process for adding
 these is detailed in the \meta/ online tutorials.
 
-This low barrier of entry and ease in experiment setup has led \meta/ to be used
-in text mining and analysis MOOCs reaching over 40,000
+This low barrier of entry experiment setup ease led to \meta/'s use in text
+mining and analysis MOOCs reaching over 40,000
 students\footnote{\url{https://www.coursera.org/course/textretrieval}}$^,$\footnote{\url{https://www.coursera.org/course/textanalytics}}.
 
 Multi-language support is hard to do correctly. Many toolkits sidestep this
