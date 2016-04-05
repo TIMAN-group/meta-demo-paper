@@ -4,19 +4,23 @@
 \begin{tabular}{|l|r|r|r|r|}
   \hline
   & \textbf{liblinear} & \textbf{scikit} &
-  \textbf{SVM\textsuperscript{mult}} & \textbf{MeTA}\\\hline
-  \textbf{20news}                    & 88.18\%          & 78.03\%  & 70.27\%          & \textbf{89.10\%}\\
-  $(k=20)$                           & 15.64s           & 5.28s    & 35.36s           & 7.55s\\\hline
-  \textbf{Blog}                      & 45.53\%          & 35.91\%  & \textbf{46.22\%} & 41.14\%\\
-  $(k=7)$                            & 310.6s           & 46.94s   & 164.6s           & 28.34s\\\hline
-  \textbf{Newegg}                    & 90.39\%          & 90.71\%  & 78.71\%          & \textbf{91.96\%}\\
-  $(k=2)$                            & 23.90s           & 10.93s   & 3.806s           & 4.182s\\\hline
-  \textbf{Yelp}                      & 91.65\%          & 92.02\%  & 80.22\%          & \textbf{92.98\%}\\
-  $(k=2)$                            & 51.89s           & 27.48s   & 9.700s           & 8.854s\\\hline
-  \textbf{rcv1}                      & \textbf{88.43\%} & 87.68\%  & 55.21\%          & 79.06\%\\
-  $(k=2)$                            & 21.04s           & 99.07s   & 3.37s            & 37.42s\\\hline
+  \textbf{SVM\textsuperscript{mult}} & \textbf{\meta/}\\\hline
+  \multirow{2}{*}{\textbf{20news}}   & 79.4\% & 74.3\% & 67.1\% & 80.1\% \\
+                                     & 2.58s  & 0.326s & 2.54s  & 0.648s \\\hline
+  \multirow{2}{*}{\textbf{Blog}}     & 75.8\% & 76.2\% & 72.2\% & 72.2\% \\
+                                     & 61.3s  & 0.801s & 17.5s  & 1.11s \\\hline
+  \multirow{2}{*}{\textbf{rcv1}}     & 94.7\% & 94.0\% & 83.6\% & 94.8\% \\
+                                     & 17.6s  & 1.66s  & 2.01s  & 3.44s \\\hline
+  \multirow{2}{*}{\textbf{Webspam}}
+  & \multirow{2}{*}{\xmark}
+  &
+  & \multirow{2}{*}{\xmark}
+  &\\
+                                     & & & &\\\hline
 \end{tabular}
 }
-\caption{(ML) Accuracy and speed classification results.}
+\caption{(ML) Accuracy and speed classification results. Reported time is
+  to both train and test the model. For all except Webspam, this excludes
+  IO.}
 \label{table:ml-exp}
 \end{table}
