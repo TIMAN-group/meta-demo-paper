@@ -39,11 +39,11 @@ users to view and participate in user support topics, community-written
 documentation, and developer discussions.
 
 A major design point in \meta/ is to allow for most of the functionality to be
-configured via a configuration file. This enables exploratory data analysis
-without having to write (or recompile) any code. Designing the code in this way
-also encourages the components of the system to be pluggable: the entire
-indexing process, for example, consists of several modular layers which can be
-controlled by the configuration file.
+configured via a configuration file. This enables minimal effort exploratory
+data analysis without having to write (or recompile) any code. Designing the
+code in this way also encourages the components of the system to be pluggable:
+the entire indexing process, for example, consists of several modular layers
+which can be controlled by the configuration file.
 
 An example snippet of a config file is given below; this creates a bigram
 part-of-speech analyzer. Multiple \texttt{[[analyzers]]} sections may be added,
