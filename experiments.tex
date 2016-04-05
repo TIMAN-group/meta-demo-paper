@@ -92,26 +92,31 @@ any small difference in MAP or precision to idiosyncrasies during tokenization.
 
 \subsection{Machine Learning}
 
-\meta/'s ML performance is compared with \textsc{liblinear}~\cite{liblinear}, a
-well-known SVM library; \textsc{scikit-learn}~\cite{scikit} a Python ML library;
-and \textsc{SVMMulticlass}~\cite{svmmulticlass}, a competitor to
-\textsc{liblinear}. We focus on linear classification across these tools.
-Statistics for the five datasets used can be found in
-Table~\ref{table:ml-datasets}.
+\meta/'s ML performance is compared with
+\textsc{liblinear}~\cite{liblinear}, \textsc{scikit-learn}~\cite{scikit},
+and \textsc{SVMMulticlass}~\cite{svmmulticlass}. We focus on linear
+classification with SVM across these tools (MALLET~\cite{mallet} does not
+provide an SVM, so it is excluded from the comparisons\todo{Maybe use
+MALLET's maxent classifier?}). Statistics for the
+five datasets used can be found in Table~\ref{table:ml-datasets}.
 
-Look at MALLET~\cite{mallet}.
+The 20news
+dataset~\cite{Lang:1995:ICML}\footnote{\url{http://qwone.com/~jason/20Newsgroups/}}
+is split into its standard 60\% training and 40\% testing sets by post
+date. The Blog dataset~\cite{blog} is split into 80\% training and 20\%
+testing randomly. Both of these two textual datasets were preprocessed
+using \meta/ using the same settings as were used for the IR experiments.
 
-Four of the datasets
-(20news\footnote{\url{http://qwone.com/~jason/20Newsgroups/}}, Newegg, and the
-Yelp Academic Dataset\footnote{\url{https://www.yelp.com/academic_dataset}}) are
-textual datasets. The Newegg (crawled ourselves) and Yelp datasets are review
-datasets, and we consider only a partial list of the whole dataset where we have
-removed all three-star reviews. We used MeTA for tokenization and feature
-generation, applying the same constraints as we did for the indexing tests.
-Randomized training (two thirds) and test splits (one third) were generated for
-each of these datasets. For rcv1, we used the existing tokenization and
-training/test splits available on the LIBSVM data
-website~\footnote{\url{http://www.csie.ntu.edu.tw/~cjlin/libsvmtools/datasets/}}.
+The rcv1 dataset~\cite{rcv1} was processed into a training and testing set
+using the \texttt{prep\_rcv1} tool provided with Leon Bottou's SGD
+tool\footnote{\url{http://leon.bottou.org/projects/sgd}}. The resulting
+training set has 781,265 documents, and the testing set 23,149. The Webspam
+corpus~\cite{Webb:2006:CEAS} consists of the subset of the Webb Spam Corpus
+used in the Pascal Large Scale Learning
+Challenge\footnote{\url{ftp://largescale.ml.tu-berlin.de/largescale/}}.
+The corpus was processed using the provided \texttt{convert.py} into byte
+trigrams. The first 80\% of the resulting file is used for training and the
+last 20\% for testing.
 
 In Table~\ref{table:ml-exp}, we can see that \meta/ performs well both in
 terms of speed and accuracy, and presents itself as a viable option in the
