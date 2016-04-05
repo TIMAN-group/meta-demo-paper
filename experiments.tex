@@ -6,9 +6,20 @@ performance in NLP, IR, and ML tasks. All experiments were performed on a
 workstation with an Intel(R) Core(TM) i7-5820K CPU, 16 GB of RAM, and a 4
 TB 5900 RPM disk.
 
+\input{nlp-parsing}
+\input{nlp-pos}
+
+\input{ir-datasets}
+\input{ir-indexing}
+\input{ir-index-size}
+\input{ir-query-speed}
+\input{ir-map}
+
+\input{ml-datasets}
+\input{ml-exp}
+
 \subsection{Natural Language Processing}
 
-\input{nlp-pos}
 
 \meta/'s part-of-speech taggers for English provide quite reasonable
 performance. It provides a linear-chain CRF tagger (CRF) as well as an
@@ -21,8 +32,6 @@ optimistic~\citep{Manning:2011:CICLing}. CoreNLP's model is the result of
 \citet{Manning:2011:CICLing}, LTag-Spinal is from
 \citet{Shen:2007:ACL}, and SCCN is from \citet{Sogaard:2011:ACL-HLT}.
 Both of \meta/'s taggers are within $0.6\%$ of the existing literature.
-
-\input{nlp-parsing}
 
 Both \meta/ and CoreNLP provide implementations of shift-reduce
 constituency parsers, following the framework of \citet{const-parsing}.
@@ -84,12 +93,6 @@ closely in retrieval speed, with \textsc{Indri} again lagging. As expected,
 query performance between the three systems is relatively even, and we attribute
 any small difference in MAP or precision to idiosyncrasies during tokenization.
 
-\input{ir-datasets}
-\input{ir-indexing}
-\input{ir-index-size}
-\input{ir-query-speed}
-\input{ir-map}
-
 \subsection{Machine Learning}
 
 \meta/'s ML performance is compared with \textsc{liblinear}~\citep{liblinear},
@@ -130,6 +133,3 @@ includes the time to load each chunk into memory; for \meta/ this is from
 its forward-index format\footnote{It took 12m 24s to generate the index.}
 and for \textsc{scikit-learn} this is from \textsc{libsvm}-formatted text
 files.
-
-\input{ml-datasets}
-\input{ml-exp}
