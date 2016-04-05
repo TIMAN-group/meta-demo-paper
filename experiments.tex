@@ -119,8 +119,15 @@ trigrams. The first 80\% of the resulting file is used for training and the
 last 20\% for testing.
 
 In Table~\ref{table:ml-exp}, we can see that \meta/ performs well both in
-terms of speed and accuracy, and presents itself as a viable option in the
-machine learning domain.
+terms of speed and accuracy. Both \textsc{liblinear} and
+\textsc{SVMMulticlass} were unable to produce models on the Webspam dataset
+due to memory limitations and lack of a minibatch framework. For
+\textsc{scikit-learn} and \meta/, we broke the training data into 4 equal
+sized batches and ran one iteration of SGD per batch. The timing result
+includes the time to load each chunk into memory; for \meta/ this is from
+its forward-index format\footnote{It took 12m 24s to generate the index.}
+and for \textsc{scikit-learn} this is from \textsc{libsvm}-formatted text
+files.
 
 \input{ml-datasets}
 \input{ml-exp}
