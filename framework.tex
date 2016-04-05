@@ -82,8 +82,8 @@ types as well, such as sentence length distribution in a document.
 \textbf{Search}.
 The \meta/ search engine can store document feature vectors in an inverted index
 and score them with respect to a query. Rankers include vector space models such
-as Okapi BM25~\cite{bm25} and probabilistic models like Dirichlet prior
-smoothing~\cite{zhai-lm}. A search demo is
+as Okapi BM25~\citep{bm25} and probabilistic models like Dirichlet prior
+smoothing~\citep{zhai-lm}. A search demo is
 online\footnote{\url{https://meta-toolkit.org/search-demo.html}}.
 
 \textbf{Classification}.
@@ -104,32 +104,32 @@ score allow model comparison.
 
 \textbf{POS tagging}.
 \meta/ contains a linear-chain conditional random field for POS tagging and
-chunking applications, learned using $\ell_2$ regularized SGD~\cite{crf}. It
-also contains an efficient greedy averaged perceptron tagger~\cite{greedy}.
+chunking applications, learned using $\ell_2$ regularized SGD~\citep{crf}. It
+also contains an efficient greedy averaged perceptron tagger~\citep{greedy}.
 
 \textbf{Parsing}.
 A fast shift-reduce constituency parser using generalized averaged perceptron
-~\cite{const-parsing} is \meta/'s grammatical parser. Parse tree featurizers
-implement different types of structural tree representations~\cite{structural}.
+~\citep{const-parsing} is \meta/'s grammatical parser. Parse tree featurizers
+implement different types of structural tree representations~\citep{structural}.
 An NLP demo online presents tokenization, POS-tagging, and
 parsing\footnote{\url{https://meta-toolkit.org/nlp-demo.html}}.
 
 \textbf{Topic models}.
 \meta/ can learn topic models over any feature representation using collapsed
-variational Bayes~\cite{cvb}, collapsed Gibbs sampling~\cite{gibbs}, stochastic
-collapsed variational Bayes~\cite{scvb}, or approximate distributed
-LDA~\cite{pargibbs}.
+variational Bayes~\citep{cvb}, collapsed Gibbs sampling~\citep{gibbs}, stochastic
+collapsed variational Bayes~\citep{scvb}, or approximate distributed
+LDA~\citep{pargibbs}.
 
 \textbf{$n$-gram language models} (LMs).
 \meta/ takes an ARPA-formatted
 input\footnote{\url{http://www.speech.sri.com/projects/srilm/manpages/ngram-format.5.html}}
 and creates a language model that can be queried for token sequence
 probabilities or used in downstream applications like
-SyntacticDiff~\cite{syndiff}.
+SyntacticDiff~\citep{syndiff}.
 % MPH not merged yet, mention?
 
 \textbf{Word embeddings}.
-The GloVe algorithm~\cite{glove} is implemented in a streaming framework and
+The GloVe algorithm~\citep{glove} is implemented in a streaming framework and
 also features an interactive semantic relationship demo. Word vectors can be
 used in other applications as part of the \meta/ API\@.
 
@@ -137,7 +137,7 @@ used in other applications as part of the \meta/ API\@.
 Directed and undirected graph implementations exist and various algorithms such
 as betweenness centrality, PageRank, and myopic search are available. Random
 graph generation models like Watts-Strogatz and preferential attachment exist.
-For these algorithms see \newcite{networks}.
+For these algorithms see \citet{networks}.
 
 \textbf{Multithreading}.
 When possible, all \meta/ algorithms and applications are parallelized using C++

@@ -17,15 +17,15 @@ accuracy on sections 22--24 of the Penn Treebank, with a few prior model
 results trained on sections 0--18 in Table~\ref{table:nlp-pos}. ``Human
 annotators'' is an estimate based on a 3\% error rate reported in the Penn
 Treebank README and is likely overly
-optimistic~\cite{Manning:2011:CICLing}. CoreNLP's model is the result of
-\newcite{Manning:2011:CICLing}, LTag-Spinal is from
-\newcite{Shen:2007:ACL}, and SCCN is from \newcite{Sogaard:2011:ACL-HLT}.
+optimistic~\citep{Manning:2011:CICLing}. CoreNLP's model is the result of
+\citet{Manning:2011:CICLing}, LTag-Spinal is from
+\citet{Shen:2007:ACL}, and SCCN is from \citet{Sogaard:2011:ACL-HLT}.
 Both of \meta/'s taggers are within $0.6\%$ of the existing literature.
 
 \input{nlp-parsing}
 
 Both \meta/ and CoreNLP provide implementations of shift-reduce
-constituency parsers, following the framework of \newcite{const-parsing}.
+constituency parsers, following the framework of \citet{const-parsing}.
 These can be trained greedily or via beam search. We compared the parser
 implementations in \meta/ and CoreNLP along two dimensions---speed,
 measured in wall time, and memory consumption, measured as maximum resident
@@ -50,12 +50,12 @@ particularly lightweight.
 
 \meta/'s IR performance is compared with two well-known search engine toolkits:
 \textsc{Lucene}'s latest version 5.5.0\footnote{\url{http://lucene.apache.org/}} and
-\textsc{Indri}'s version 5.9\footnote{Indri 5.10 does not provide source
-    code packages and thus could not be used. It is also known as
-\textsc{Lemur}.}~\cite{lemur}.
+\textsc{Indri}'s version 5.9~\citep{lemur}\footnote{Indri 5.10 does not
+provide source code packages and thus could not be used. It is also known
+as \textsc{Lemur}.}.
 
-For the IR experiments, we use the TREC blog06~\cite{blog06} permalink documents
-and TREC gov2 corpus~\cite{gov2}. To ensure a more uniform indexing environment,
+For the IR experiments, we use the TREC blog06~\citep{blog06} permalink documents
+and TREC gov2 corpus~\citep{gov2}. To ensure a more uniform indexing environment,
 all HTML is cleaned before indexing. In addition, each corpus is converted into
 a single file with one document per line to reduce the effects of many file
 operations.
@@ -92,28 +92,28 @@ any small difference in MAP or precision to idiosyncrasies during tokenization.
 
 \subsection{Machine Learning}
 
-\meta/'s ML performance is compared with \textsc{liblinear}~\cite{liblinear},
-\textsc{scikit-learn}~\cite{scikit}, and
-\textsc{SVMMulticlass}~\cite{svmmulticlass}. We focus on linear classification
-with SVM across these tools (MALLET~\cite{mallet} does not provide an SVM, so it
-is excluded from the comparisons
-%\todo{Maybe use MALLET's maxent classifier?}).
+\meta/'s ML performance is compared with \textsc{liblinear}~\citep{liblinear},
+\textsc{scikit-learn}~\citep{scikit}, and
+\textsc{SVMMulticlass}~\citep{svmmulticlass}. We focus on linear classification
+with SVM across these tools (MALLET~\citep{mallet} does not provide an SVM, so it
+is excluded from the comparisons).
+%\todo{Maybe use MALLET's maxent classifier?}
 % not enough space
 Statistics for the five datasets used can be found in
 Table~\ref{table:ml-datasets}.
 
 The 20news
-dataset~\cite{Lang:1995:ICML}\footnote{\url{http://qwone.com/~jason/20Newsgroups/}}
+dataset~\citep{Lang:1995:ICML}\footnote{\url{http://qwone.com/~jason/20Newsgroups/}}
 is split into its standard 60\% training and 40\% testing sets by post
-date. The Blog dataset~\cite{blog} is split into 80\% training and 20\%
+date. The Blog dataset~\citep{blog} is split into 80\% training and 20\%
 testing randomly. Both of these two textual datasets were preprocessed
 using \meta/ using the same settings as were used for the IR experiments.
 
-The rcv1 dataset~\cite{rcv1} was processed into a training and testing set
+The rcv1 dataset~\citep{rcv1} was processed into a training and testing set
 using the \texttt{prep\_rcv1} tool provided with Leon Bottou's SGD
 tool\footnote{\url{http://leon.bottou.org/projects/sgd}}. The resulting
 training set has 781,265 documents, and the testing set 23,149. The Webspam
-corpus~\cite{Webb:2006:CEAS} consists of the subset of the Webb Spam Corpus
+corpus~\citep{Webb:2006:CEAS} consists of the subset of the Webb Spam Corpus
 used in the Pascal Large Scale Learning
 Challenge\footnote{\url{ftp://largescale.ml.tu-berlin.de/largescale/}}.
 The corpus was processed using the provided \texttt{convert.py} into byte
