@@ -92,13 +92,15 @@ smoothing~\citep{zhai-lm}. A search demo is
 online\footnote{\url{https://meta-toolkit.org/search-demo.html}}.
 
 \textbf{Classification}.
-\meta/ includes a stochastic gradient descent (SGD) implementation with
-pluggable loss functions, allowing creation of an SVM classifier (among others).
-All-\emph{vs}-all and one-\emph{vs}-all ensemble methods for binary classifiers
-allow multiclass classification. Other classifiers like na{\"i}ve Bayes and
-$k$-nearest neighbors also exist. A confusion matrix class and significance
-testing framework allow evaluation and comparison of different methods and
-feature representations.
+\meta/ includes a normalized adaptive stochastic gradient descent (SGD)
+implementation~\citep{Ross:2013:UAI} with pluggable loss functions, allowing
+creation of an SVM classifier (among others). Both
+$\ell_1$~\citep{Tsuruoka:2009:ACLIJCNLP} and $\ell_2$ regularization are
+supported. Ensemble methods for binary classifiers allow multiclass
+classification. Other classifiers like na{\"i}ve Bayes and $k$-nearest
+neighbors also exist. A confusion matrix class and significance testing
+framework allow evaluation and comparison of different methods and feature
+representations.
 
 \textbf{Regression}.
 Regression via SGD predicts real-valued responses from featurized documents.
